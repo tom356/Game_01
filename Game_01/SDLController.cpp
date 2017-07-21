@@ -29,10 +29,9 @@ bool SDLControl::clear()
 	//SDL_Quit();
 	return true;
 }
-const SDL_Event& SDLControl::getEvent()
-{
-	SDL_PollEvent(&windowEvent);
-	return windowEvent;
+int SDLControl::getEvent(SDL_Event& e)
+{	
+	return SDL_PollEvent(&e);
 }
 void SDLControl::drawImage(std::string fileName, int x, int y, int w, int h)
 {

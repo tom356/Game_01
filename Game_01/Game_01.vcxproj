@@ -153,6 +153,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Physics.cpp" />
@@ -160,6 +161,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h" />
+    <ClInclude Include="InputManager.h" />
     <ClInclude Include="Objects.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="SDLController.h" />

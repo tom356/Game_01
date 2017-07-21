@@ -48,7 +48,7 @@ namespace SDLCtrl
 		SDLSurfaceUPtr window_surface;
 		//std::vector<SDLSurfaceUPtr> images;
 		std::map<std::string, SDLSurfaceUPtr> images;
-		SDL_Event windowEvent;
+		//SDL_Event windowEvent;
 		SDL_Rect rect;
 
 	public:
@@ -57,7 +57,7 @@ namespace SDLCtrl
 		~SDLControl();
 		bool init();
 		bool clear();
-		const SDL_Event& getEvent();
+		int getEvent(SDL_Event& e);
 		void drawImage(std::string fileName, int x, int y, int w, int h);
 		void print();
 	};
