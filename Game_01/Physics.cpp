@@ -94,6 +94,13 @@ double Vector::length()
 }
 
 //------------Physics-------------
+Object::Object() 
+{
+	frame.pos.x = 0;
+	frame.pos.y = 0;
+	frame.w = 0;
+	frame.h = 0;
+}
 Object::Object(int x, int y, int w, int h) 
 {
 	frame.pos.x = x;
@@ -102,6 +109,21 @@ Object::Object(int x, int y, int w, int h)
 	frame.h = h;
 }
 Object::~Object() {}
+void Object::setPos(int x, int y)
+{
+	frame.pos.x = x;
+	frame.pos.y = y;
+}
+void Object::setSize(int w, int h)
+{
+	frame.w = w;
+	frame.h = h;
+}
 void Object::move() { frame.pos += force; }
+void Object::moveBy(int x, int y) 
+{ 
+	frame.pos.x += x;
+	frame.pos.y += y;
+}
 Frame &Object::getFrame() { return frame; }
 Vector &Object::getForce() { return force;  }

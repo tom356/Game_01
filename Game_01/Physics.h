@@ -27,6 +27,7 @@ namespace GamePhysics
 		double length();
 	};
 	static double gravity = 2;
+	static double terminal_velocity = 25;
 	struct Frame
 	{
 		Vector pos;
@@ -34,6 +35,7 @@ namespace GamePhysics
 	};
 	class Object
 	{
+	protected:
 		Frame frame;
 		Vector force;
 		friend bool detectCollision(Object &o1, Object &o2);
@@ -41,12 +43,17 @@ namespace GamePhysics
 		friend bool detectCollisionMoveing(Object &o1, Object &o2);
 		friend void collideObjects(Object &o1, Object &o2);		
 		friend void applyForce(Object &obj, Vector v);
+		friend inline void applyForce(Object &obj, double x, double y);
 		friend void applyGravity(Object &obj);
-		
+		friend void setForce(Object &obj, Vector v);
 	public:
+		Object();
 		Object(int x, int y, int w, int h);
 		~Object();
+		void setPos(int x, int y);
+		void setSize(int w, int h);
 		void move();
+		void moveBy(int x, int y);
 		Frame &getFrame();
 		Vector &getForce();
 	};
@@ -82,5 +89,7 @@ namespace GamePhysics
 	}
 
 	inline void applyForce(Object &obj, Vector v) { obj.force += v; }
-	inline void applyGravity(Object &obj) { obj.force.y += gravity; }
+	inline void applyForce(Object &obj, double x, double y) { obj.force.x += x; obj.force.y += y;}
+	inline void setForce(Object &obj, Vector v) { obj.force = v; }
+	inline void applyGravity(Object &obj) { obj.force.y = (obj.force.y > terminal_velocity ? terminal_velocity : obj.force.y + gravity); }
 }
