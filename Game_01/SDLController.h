@@ -4,7 +4,6 @@
 #include <vector>
 #include <map>
 #include <SDL2/SDL.h>
-
 namespace SDLCtrl
 {
 	namespace SDLWrapper
@@ -50,6 +49,7 @@ namespace SDLCtrl
 		std::map<std::string, SDLSurfaceUPtr> images;
 		//SDL_Event windowEvent;
 		SDL_Rect rect;
+		SDL_Rect source_rect;
 
 	public:
 

@@ -99,10 +99,6 @@ bool GamePhysics::collideObjects(Object &o1, Object &o2)
 	bool collision = false;
 	if (detectCollision(o1, o1.force.x, 0, o2))
 	{
-		if (o1.force.x > 0)
-			o1.frame.pos.x = o2.frame.pos.x - o1.frame.h;
-		if (o1.force.x < 0)
-			o1.frame.pos.x = o2.frame.pos.x + o2.frame.h;
 		o1.force.x = 0;
 		collision = true;
 	}
@@ -111,9 +107,9 @@ bool GamePhysics::collideObjects(Object &o1, Object &o2)
 		if (o1.force.y > 0)
 		{
 			o1.frame.pos.y = o2.frame.pos.y - o1.frame.h;
-			o1.force.y = 0;
+			o1.force.y = 0; // primitive bouncing: -o1.force.y;
 		}
-		if (o1.force.y < 0)
+		else if (o1.force.y < 0)
 		{
 			o1.frame.pos.y = o2.frame.pos.y + o2.frame.h;
 			o1.force.y = 1;

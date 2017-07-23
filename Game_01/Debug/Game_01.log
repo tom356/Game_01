@@ -1,7 +1,13 @@
 ﻿  Game.cpp
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(79): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(88): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(90): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(91): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(49): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(50): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(169): warning C4018: '<': signed/unsigned mismatch
+c:\users\user\documents\visual studio 2015\projects\game_01\game_01\game.cpp(181): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+  Compiling...
+  main.cpp
+  SDLController.cpp
+  InputManager.cpp
+  Generating Code...
   Game_01.vcxproj -> C:\Users\user\documents\visual studio 2015\Projects\Game_01\Debug\Game_01.exe

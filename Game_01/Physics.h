@@ -57,7 +57,7 @@ namespace GamePhysics
 		Frame &getFrame();
 		Vector &getForce();
 	};
-	//detects collision between objects
+	//detects collision between objects; not used
 	inline bool detectCollision(Object &o1, Object &o2)
 	{
 		return (o1.frame.pos.x < o2.frame.pos.x + o2.frame.w &&
@@ -65,7 +65,7 @@ namespace GamePhysics
 			o1.frame.pos.y < o2.frame.pos.y + o2.frame.h &&
 			o1.frame.h + o1.frame.pos.y > o2.frame.pos.y);
 	}
-	//detects collision with offset
+	//detects collision with offset; not used
 	inline bool detectCollision(Object &o1, double x_offset, double y_offset, Object &o2)
 	{
 		return (o1.frame.pos.x + x_offset < o2.frame.pos.x + o2.frame.w &&
@@ -73,13 +73,13 @@ namespace GamePhysics
 			o1.frame.pos.y + y_offset < o2.frame.pos.y + o2.frame.h &&
 			o1.frame.h + o1.frame.pos.y + y_offset > o2.frame.pos.y);
 	}
-	//detects collision minding object movement
+	//detects collision minding object movement; not used
 	inline bool detectCollisionMoveing(Object &o1, Object &o2)
 	{
 		return detectCollision(o1, o1.force.x, o1.force.y, o2);
 	}
 
-	// detects collision side and stops object
+	// detects collision side and stops object; used
 	bool collideObjects(Object &o1, Object &o2);
 
 	inline void applyForce(Object &obj, Vector v) { obj.force += v; }

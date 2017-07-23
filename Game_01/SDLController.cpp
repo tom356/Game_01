@@ -43,7 +43,11 @@ void SDLControl::drawImage(std::string fileName, int x, int y, int w, int h)
 		rect.y = y;
 		rect.w = w;
 		rect.h = h;
-		SDL_BlitSurface(images[fileName].get(), NULL, window_surface.get(), &rect);
+		source_rect.x = 0;
+		source_rect.y = 0;
+		source_rect.w = w;
+		source_rect.h = h;		
+		SDL_BlitSurface(images[fileName].get(), &source_rect, window_surface.get(), &rect);
 	}
 }
 void SDLControl::print()

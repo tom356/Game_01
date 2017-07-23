@@ -22,27 +22,43 @@ namespace gamenamespace
 		void playerOnGround();
 	};
 		
+	class Level
+	{		
+		std::vector<GamePhysics::Object> ledges;
+		GamePhysics::Object goal;		
+	public:
+		Level();
+		Level(int width, int height);
+		~Level();
+		void setSize(int width, int height);
+		void addLedge(int x, int y, int w, int h);
+		void setGoalPos(int x, int y);
+		void drawLevel(std::shared_ptr<SDLCtrl::SDLControl> s);
+		std::vector<GamePhysics::Object> &getLedges();
+		GamePhysics::Object &getGoal();
+	};
 	class Game
 	{
 		gameUtility::Timer gameTimer;
 		gameUtility::Timer renderTimer;
-		Player player;
-
-		GamePhysics::Object floor;
-		std::vector<GamePhysics::Object> crates;
-		GamePhysics::Object goal;
+		Player player;		
+		Level level;
+		int currentLevel;
 
 		GamePhysics::Vector JumpVector;
 		std::shared_ptr<SDLCtrl::SDLControl> sdlControl;
 		std::shared_ptr<InpManager::InputManager> inputManager;
 		bool gameOver;
+
+		void makeLevel(int level_id);
+		void processInput();
+		bool collisionDetection();
+		void drawScene();
+		void nextLevel();
 	public:
 
 		Game();
 		~Game();		
-		void mainLoop();
-		void processInput();
-		bool collisionDetection();
-		void drawScene();
+		void mainLoop();		
 	};
 }
