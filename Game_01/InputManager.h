@@ -4,7 +4,7 @@ namespace InpManager
 {	
 	struct Keyboard
 	{
-		bool left, right, esc, space;
+		bool left, right, esc, space, l;
 		Keyboard();
 	};
 	struct Mouse

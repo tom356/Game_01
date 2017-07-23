@@ -94,6 +94,34 @@ double Vector::length()
 }
 
 //------------Physics-------------
+bool GamePhysics::collideObjects(Object &o1, Object &o2)
+{
+	bool collision = false;
+	if (detectCollision(o1, o1.force.x, 0, o2))
+	{
+		if (o1.force.x > 0)
+			o1.frame.pos.x = o2.frame.pos.x - o1.frame.h;
+		if (o1.force.x < 0)
+			o1.frame.pos.x = o2.frame.pos.x + o2.frame.h;
+		o1.force.x = 0;
+		collision = true;
+	}
+	if (detectCollision(o1, 0, o1.force.y, o2))
+	{
+		if (o1.force.y > 0)
+		{
+			o1.frame.pos.y = o2.frame.pos.y - o1.frame.h;
+			o1.force.y = 0;
+		}
+		if (o1.force.y < 0)
+		{
+			o1.frame.pos.y = o2.frame.pos.y + o2.frame.h;
+			o1.force.y = 1;
+		}
+		collision = true;
+	}
+	return collision;
+}
 Object::Object() 
 {
 	frame.pos.x = 0;

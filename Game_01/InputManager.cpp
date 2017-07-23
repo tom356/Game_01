@@ -2,6 +2,7 @@
 using namespace InpManager;
 Keyboard::Keyboard()
 {
+	l = false;
 	left = false;
 	right = false;
 	esc = false;
@@ -28,6 +29,7 @@ void InputManager::poll()
 			case SDL_KEYDOWN:
 				switch (event.key.keysym.sym)
 				{
+					case SDLK_l: keyboard.l = true; break;
 					case SDLK_LEFT: keyboard.left = true; break;
 					case SDLK_RIGHT: keyboard.right = true; break;
 					case SDLK_ESCAPE: keyboard.esc = true; break;
@@ -38,6 +40,7 @@ void InputManager::poll()
 			case SDL_KEYUP:
 				switch (event.key.keysym.sym)
 				{
+					case SDLK_l: keyboard.l = false; break;
 					case SDLK_LEFT: keyboard.left = false; break;
 					case SDLK_RIGHT: keyboard.right = false; break;
 					case SDLK_ESCAPE: keyboard.esc = false; break;

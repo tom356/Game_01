@@ -26,8 +26,8 @@ namespace GamePhysics
 		void normalize();
 		double length();
 	};
-	static double gravity = 2;
-	static double terminal_velocity = 25;
+	static double gravity = 1;
+	static double terminal_velocity = 20;
 	struct Frame
 	{
 		Vector pos;
@@ -41,7 +41,7 @@ namespace GamePhysics
 		friend bool detectCollision(Object &o1, Object &o2);
 		friend bool detectCollision(Object &o1, double x_offset, double y_offset, Object &o2);
 		friend bool detectCollisionMoveing(Object &o1, Object &o2);
-		friend void collideObjects(Object &o1, Object &o2);		
+		friend bool collideObjects(Object &o1, Object &o2);		
 		friend void applyForce(Object &obj, Vector v);
 		friend inline void applyForce(Object &obj, double x, double y);
 		friend void applyGravity(Object &obj);
@@ -76,17 +76,11 @@ namespace GamePhysics
 	//detects collision minding object movement
 	inline bool detectCollisionMoveing(Object &o1, Object &o2)
 	{
-		return 	detectCollision(o1, o1.force.x, o1.force.y, o2);
+		return detectCollision(o1, o1.force.x, o1.force.y, o2);
 	}
 
 	// detects collision side and stops object
-	inline void collideObjects(Object &o1, Object &o2)
-	{
-		if (o1.frame.pos.x + o1.frame.w > o2.frame.pos.x && o1.frame.pos.x < o2.frame.pos.x) { (o1.force.x>0 ? 0 : o1.force.x); }/*kolizja z prawej*/
-		if (o1.frame.pos.x < o2.frame.pos.x + o2.frame.w && o1.frame.pos.x > o2.frame.pos.x) { (o1.force.x < 0 ? 0 : o1.force.x); }/*kolizja z lewej*/
-		if (o1.frame.pos.y < o2.frame.pos.y + o2.frame.h && o1.frame.pos.y > o2.frame.pos.y) { (o1.force.y < 0 ? 0 : o1.force.y); }/*kolizja z gory*/
-		if (o1.frame.pos.y + o1.frame.h > o2.frame.pos.y && o1.frame.pos.y < o2.frame.pos.y) { (o1.force.y>0 ? 0 : o1.force.y); }/*kolizja z dolu*/
-	}
+	bool collideObjects(Object &o1, Object &o2);
 
 	inline void applyForce(Object &obj, Vector v) { obj.force += v; }
 	inline void applyForce(Object &obj, double x, double y) { obj.force.x += x; obj.force.y += y;}
