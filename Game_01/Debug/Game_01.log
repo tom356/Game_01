@@ -1,12 +1,5 @@
-﻿  main.cpp
-  SDLController.cpp
-  LevelControl.cpp
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\levelcontrol.cpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\levelcontrol.cpp(38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\levelcontrol.cpp(39): warning C4018: '<': signed/unsigned mismatch
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\levelcontrol.cpp(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\user\documents\visual studio 2015\projects\game_01\game_01\levelcontrol.cpp(52): warning C4018: '<': signed/unsigned mismatch
-  InputManager.cpp
-  Game.cpp
+﻿  Game.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  Physics.cpp
   Game_01.vcxproj -> C:\Users\user\documents\visual studio 2015\Projects\Game_01\Debug\Game_01.exe

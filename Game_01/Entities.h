@@ -16,4 +16,5 @@ namespace Entities
 		void stopped();
 		void playerOnGround();
 	};
+	using PlayerSP = std::shared_ptr<Player>;
 }

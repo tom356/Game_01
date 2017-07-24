@@ -5,9 +5,8 @@
 #include <map>
 #include <SDL2/SDL.h>
 namespace SDLCtrl
-{	
-	// not sure if this should not be a separate class
-	namespace SDLWrapper
+{		
+	namespace SDLWrapper // not sure if this should not be a separate file
 	{
 		struct SDLDeleter
 		{
@@ -59,9 +58,12 @@ namespace SDLCtrl
 		void drawImage(std::string fileName, int x, int y, int w, int h);
 		void print();
 	};
-	static std::shared_ptr<SDLControl> getInstace() 
+
+	using SDLControlSP = std::shared_ptr<SDLControl>;
+
+	static SDLControlSP getInstace()
 	{ 
-		std::shared_ptr<SDLControl> ptr = std::make_shared<SDLControl>();
+		auto ptr = std::make_shared<SDLControl>();
 		return ptr;
-	}
+	}	
 }

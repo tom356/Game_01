@@ -8,7 +8,7 @@
 #include "Entities.h"
 #include "LevelControl.h"
 /*
-	Main Game file
+	Main Game
 	Controls the flow of the program
 	all nececery subcomponents of allication meets here
 */
@@ -16,14 +16,14 @@ namespace GameMain
 {		
 	class Game
 	{
-		std::shared_ptr<SDLCtrl::SDLControl> sdlControl;
-		std::shared_ptr<InpManager::InputManager> inputManager;
-		std::shared_ptr<Entities::Player> player;
-		std::shared_ptr<Level> currentLevel;
+		SDLCtrl::SDLControlSP sdlControl;
+		InpManager::InputManagerSP inputManager;
+		Entities::PlayerSP player;
+		LevelSP currentLevel;
+		
+		LevelMaker levelMaker;		
 		gameUtility::Timer gameTimer;
-		gameUtility::Timer renderTimer;
-		LevelMaker levelMaker;
-
+		gameUtility::Timer renderTimer; // not used		
 		int currentLevel_id;		
 		bool gameOver;
 

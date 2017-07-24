@@ -1,5 +1,7 @@
 #include "InputManager.h"
 using namespace InpManager;
+
+//------------Keyboard-------------
 Keyboard::Keyboard()
 {
 	l = false;
@@ -8,6 +10,8 @@ Keyboard::Keyboard()
 	esc = false;
 	space = false;
 }
+
+//------------Mouse-------------
 Mouse::Mouse() 
 {
 	x = 0;
@@ -15,7 +19,10 @@ Mouse::Mouse()
 	lmb = false;
 	rmb = false;
 }
-InputManager::InputManager(std::shared_ptr<SDLCtrl::SDLControl> sdlControl) 
+
+
+//------------InputManager-------------
+InputManager::InputManager(SDLCtrl::SDLControlSP sdlControl)
 {
 	this->sdlControl = sdlControl;
 }
@@ -50,11 +57,11 @@ void InputManager::poll()
 		}
 	}
 }
-Keyboard &InputManager::getKeyboard() 
+const Keyboard &InputManager::getKeyboard()
 {
 	return keyboard;
 }
-Mouse &InputManager::getMouse() 
+const Mouse &InputManager::getMouse()
 {
 	return mouse;
 }

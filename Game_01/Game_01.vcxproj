@@ -157,7 +157,6 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LevelControl.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Objects.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="SDLController.cpp" />
     <ClCompile Include="Utils.cpp" />
@@ -167,7 +166,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LevelControl.h" />
-    <ClInclude Include="Objects.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="SDLController.h" />
     <ClInclude Include="Utils.h" />

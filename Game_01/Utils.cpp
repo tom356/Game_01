@@ -7,8 +7,12 @@ Timer::Timer()
 	reset();
 	tick = 1000;
 }
-Timer::Timer(int tick) : tick(tick) { reset(); }
+Timer::Timer(int tick) : tick(tick) 
+{ 
+	reset(); 
+}
 Timer::~Timer() {}
+
 void Timer::setTick(int tick) { this->tick = tick; }
 bool Timer::isTime() 
 {	

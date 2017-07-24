@@ -97,8 +97,8 @@ double Vector::length()
 bool GamePhysics::collideObjects(Object &o1, Object &o2)
 {
 	bool collision = false;
-	if (detectCollision(o1, o1.force.x, 0, o2))
-	{
+	if (detectCollision(o1, o1.force.x, 0, o2))				// side collision, no need for now to differ sides, 
+	{														// player movement vector -5,5 (everything declared in gameplay is devidable by 5)
 		o1.force.x = 0;
 		collision = true;
 	}
@@ -106,13 +106,13 @@ bool GamePhysics::collideObjects(Object &o1, Object &o2)
 	{
 		if (o1.force.y > 0)
 		{
-			o1.frame.pos.y = o2.frame.pos.y - o1.frame.h;
-			o1.force.y = 0; // primitive bouncing: -o1.force.y;
+			o1.frame.pos.y = o2.frame.pos.y - o1.frame.h;	// stick object to colliding object
+			o1.force.y = 0;									// stop; primitive forever bouncing: -o1.force.y;
 		}
 		else if (o1.force.y < 0)
 		{
-			o1.frame.pos.y = o2.frame.pos.y + o2.frame.h;
-			o1.force.y = 1;
+			o1.frame.pos.y = o2.frame.pos.y + o2.frame.h;	// stick object to colliding object
+			o1.force.y = 1;									// quickfix, 0 couses object to stick to ceiling while holding space
 		}
 		collision = true;
 	}

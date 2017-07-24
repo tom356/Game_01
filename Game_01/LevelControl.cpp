@@ -4,7 +4,7 @@ Level::Level()
 {	
 }
 Level::Level(int playerX, int playerY, int goalX, int goalY, 
-			std::shared_ptr<SDLCtrl::SDLControl> sdlControl, std::shared_ptr<Entities::Player> player)
+			SDLCtrl::SDLControlSP sdlControl, Entities::PlayerSP player)
 {
 	initLevel(playerX, playerY, goalX, goalY, sdlControl, player);
 }
@@ -12,7 +12,7 @@ Level::~Level()
 {
 }
 void Level::initLevel(int playerX, int playerY, int goalX, int goalY, 
-			std::shared_ptr<SDLCtrl::SDLControl> sdlControl, std::shared_ptr<Entities::Player> player)
+			SDLCtrl::SDLControlSP sdlControl, Entities::PlayerSP player)
 {
 	this->sdlControl = sdlControl;
 	this->player = player;
@@ -68,25 +68,26 @@ bool Level::isFinished() { return levelClear; }
 
 
 //------------LevelMaker-------------
-
-void LevelMaker::init(	std::shared_ptr<SDLCtrl::SDLControl> sdlControl, 
-						std::shared_ptr<Entities::Player> player)
+LevelMaker::LevelMaker() {}
+LevelMaker::~LevelMaker() {}
+void LevelMaker::init(	SDLCtrl::SDLControlSP sdlControl, Entities::PlayerSP player)
 {
 	this->sdlControl = sdlControl;
 	this->player = player;
 }
-LevelMaker::LevelMaker() {}
-LevelMaker::~LevelMaker() {}
-std::shared_ptr<Level> LevelMaker::getLevel(int level_id) 
+
+LevelSP LevelMaker::getLevel(int level_id)
 {
-	auto l = std::make_shared<Level>();
+	LevelSP l = NULL;
 	switch (level_id)
 	{
 	case 0:
+		l = std::make_shared<Level>();
 		l->initLevel(0, SDLCtrl::HEIGHT - 100, 200, SDLCtrl::HEIGHT - 100, sdlControl, player);
 		l->addLedge(0, SDLCtrl::HEIGHT, SDLCtrl::WIDTH, 100);
 	break;
 	case 1:
+		l = std::make_shared<Level>();
 		l->initLevel(0, SDLCtrl::HEIGHT - 100, 700, 100, sdlControl, player);
 		l->addLedge(0, SDLCtrl::HEIGHT, SDLCtrl::WIDTH, 100);
 		l->addLedge(480, 540, 100, 50);
@@ -95,6 +96,7 @@ std::shared_ptr<Level> LevelMaker::getLevel(int level_id)
 		l->addLedge(600, 140, 100, 50);
 	break;
 	case 2:	
+		l = std::make_shared<Level>();
 		l->initLevel(0, SDLCtrl::HEIGHT - 100, 900, 100, sdlControl, player);		
 		l->addLedge(0, SDLCtrl::HEIGHT, SDLCtrl::WIDTH, 100);
 		l->addLedge(200, 540, 100, 50);
@@ -103,11 +105,13 @@ std::shared_ptr<Level> LevelMaker::getLevel(int level_id)
 		l->addLedge(550, 240, 100, 50);
 	break;
 	case 3:
+		l = std::make_shared<Level>();
 		l->addLedge(0, SDLCtrl::HEIGHT, SDLCtrl::WIDTH, 100);
 		l->initLevel(0, SDLCtrl::HEIGHT - 100, 900, SDLCtrl::HEIGHT - 100, sdlControl, player);
 	break;
 	default:
 	break;
 	}
+
 	return l;
 }

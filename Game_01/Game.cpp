@@ -9,14 +9,12 @@ Game::Game()
 	player = std::make_shared<Entities::Player>(0,0,100,100);
 
 	gameTimer.setTick(20);//~60fps
-	renderTimer.setTick(20);//~60fps
-			
+	renderTimer.setTick(20);//~60fps			
 	levelMaker.init(sdlControl, player);
-
 	currentLevel_id = -1;
-	nextLevel();
+	sdlControl->init();
 
-	sdlControl->init();	
+	nextLevel();	
 }
 Game::~Game()
 {
@@ -30,7 +28,7 @@ void Game::nextLevel()
 }
 void Game::processInput()
 {
-	inputManager->poll(); // updates struct keyboard
+	inputManager->poll();						// updates struct keyboard
 
 	gameOver = inputManager->getKeyboard().esc;	// window close event is linked to esc as well
 
@@ -50,11 +48,10 @@ void Game::mainLoop()
 		if (gameTimer.isTime())
 		{			
 			processInput();						
-			currentLevel->applyPhysics();				
-		}
-		
-		if (renderTimer.isTime())
+			currentLevel->applyPhysics();
 			currentLevel->drawLevel();
+		}		
+		//if (renderTimer.isTime()) {}
 
 		if (currentLevel->isFinished())	
 			nextLevel();

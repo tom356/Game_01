@@ -29,8 +29,10 @@ int SDLControl::getEvent(SDL_Event& e)
 }
 void SDLControl::drawImage(std::string fileName, int x, int y, int w, int h)
 {
+	//Images are stored inside of a map, and loaded once
 	if (images.find(fileName) == images.end())
 		images[fileName] = SDLSurfaceUPtr(SDLWrapper::createImage(fileName.c_str()));
+
 	if (images[fileName])
 	{
 		rect.x = x;

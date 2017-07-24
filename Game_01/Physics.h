@@ -4,8 +4,9 @@
 
 namespace GamePhysics
 {
-	static double gravity = 3;
-	static double terminal_velocity = 20;
+	static double gravity = 3; //force applied by applyGravity(), can be change for different levels
+	static double terminal_velocity = 20; //max falling speed applied by applyGravity()
+	
 
 	struct Vector
 	{
@@ -35,6 +36,7 @@ namespace GamePhysics
 		Vector pos;
 		int w, h;
 	};
+
 	class Object
 	{
 	protected:
@@ -54,8 +56,8 @@ namespace GamePhysics
 		~Object();
 		void setPos(int x, int y);
 		void setSize(int w, int h);
-		void move();
-		void moveBy(int x, int y);
+		void move();				// applying force vector to object position
+		void moveBy(int x, int y);  // moveing object by constants
 		Frame &getFrame();
 		Vector &getForce();
 	};
@@ -67,7 +69,7 @@ namespace GamePhysics
 			o1.frame.pos.y < o2.frame.pos.y + o2.frame.h &&
 			o1.frame.h + o1.frame.pos.y > o2.frame.pos.y);
 	}
-	//detects collision with offset; not used
+	//detects collision between objects with offset on first object
 	inline bool detectCollision(Object &o1, double x_offset, double y_offset, Object &o2)
 	{
 		return (o1.frame.pos.x + x_offset < o2.frame.pos.x + o2.frame.w &&
@@ -75,13 +77,13 @@ namespace GamePhysics
 			o1.frame.pos.y + y_offset < o2.frame.pos.y + o2.frame.h &&
 			o1.frame.h + o1.frame.pos.y + y_offset > o2.frame.pos.y);
 	}
-	//detects collision minding object movement; not used
+	//detects collision minding object force; not used
 	inline bool detectCollisionMoveing(Object &o1, Object &o2)
 	{
 		return detectCollision(o1, o1.force.x, o1.force.y, o2);
 	}
 
-	// detects collision side and stops object; used
+	// detects collision and in case of one, stops object (not inline a bit too much code i think)
 	bool collideObjects(Object &o1, Object &o2);
 
 	inline void applyForce(Object &obj, Vector v) { obj.force += v; }
