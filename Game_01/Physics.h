@@ -4,6 +4,9 @@
 
 namespace GamePhysics
 {
+	static double gravity = 3;
+	static double terminal_velocity = 20;
+
 	struct Vector
 	{
 		double x, y;
@@ -26,8 +29,7 @@ namespace GamePhysics
 		void normalize();
 		double length();
 	};
-	static double gravity = 1;
-	static double terminal_velocity = 20;
+
 	struct Frame
 	{
 		Vector pos;

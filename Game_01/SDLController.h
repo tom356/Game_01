@@ -5,7 +5,8 @@
 #include <map>
 #include <SDL2/SDL.h>
 namespace SDLCtrl
-{
+{	
+	// not sure if this should not be a separate class
 	namespace SDLWrapper
 	{
 		struct SDLDeleter
@@ -45,9 +46,7 @@ namespace SDLCtrl
 	{
 		SDLWindowUptr window;
 		SDLSurfaceUPtr window_surface;
-		//std::vector<SDLSurfaceUPtr> images;
 		std::map<std::string, SDLSurfaceUPtr> images;
-		//SDL_Event windowEvent;
 		SDL_Rect rect;
 		SDL_Rect source_rect;
 
@@ -56,7 +55,6 @@ namespace SDLCtrl
 		SDLControl();
 		~SDLControl();
 		bool init();
-		bool clear();
 		int getEvent(SDL_Event& e);
 		void drawImage(std::string fileName, int x, int y, int w, int h);
 		void print();

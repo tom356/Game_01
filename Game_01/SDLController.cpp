@@ -17,16 +17,10 @@ bool SDLControl::init()
 		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, WIDTH, HEIGHT,
 		SDL_WINDOW_ALLOW_HIGHDPI /*|| SDL_WINDOW_MAXIMIZED*/);
 	if (!window) return false;
-	//SDL_SetWindowFullscreen(window.get(), SDL_WINDOW_FULLSCREEN);
-
+	
 	window_surface = SDLSurfaceUPtr(SDLWrapper::createWindowSurface(window.get()));
 	if (!window_surface) return false;
 
-	return true;
-}
-bool SDLControl::clear()
-{
-	//SDL_Quit();
 	return true;
 }
 int SDLControl::getEvent(SDL_Event& e)

@@ -1,0 +1,19 @@
+﻿  Entities.cpp
+  Game.cpp
+  InputManager.cpp
+  LevelControl.cpp
+LevelControl.cpp(33): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+LevelControl.cpp(38): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+LevelControl.cpp(39): warning C4018: '<': signed/unsigned mismatch
+LevelControl.cpp(43): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+LevelControl.cpp(52): warning C4018: '<': signed/unsigned mismatch
+  main.cpp
+  Objects.cpp
+  Physics.cpp
+  SDLController.cpp
+  Utils.cpp
+Utils.cpp(15): warning C4244: '=': conversion from '__int64' to 'int', possible loss of data
+  Generating code
+  All 545 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Game_01.vcxproj -> C:\Users\user\documents\visual studio 2015\Projects\Game_01\Release\Game_01.exe
